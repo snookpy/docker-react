@@ -7,3 +7,19 @@ before_install:
 
 script:
     - docker run -e CI=true nuenook/docker-react npm run test
+
+deploy:
+    # edge: true
+    provider: elasticbeanstalk
+    region: "ap-southeast-1"
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-ap-southeast-1-323601448954"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key: $AWS_SECRET_KEY      
+# DockerReact-env.n7ziqvsbum.ap-southeast-1.elasticbeanstalk.com
+# access_key_id: $AWS_ACCESS_KEY
+# secret_access_key: $AWS_SECRET_KEY
